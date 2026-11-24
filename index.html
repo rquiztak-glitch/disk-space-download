@@ -1,59 +1,29 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>Disk Space Download</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d1726"><title>Disk Space Download</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2e;--muted:#9aa9bf;--line:#26364d;--accent:#54d6a0}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 0,#1b3450 0,var(--bg) 48%);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:#eef5ff;display:grid;place-items:center;padding:22px}
-main{width:min(100%,650px)}.brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#54d6a0,#36a6c8);display:grid;place-items:center;color:#07131c;font-size:23px;font-weight:900}.brand strong{display:block;font-size:18px;letter-spacing:.2px}.brand span{font-size:12px;color:var(--muted)}
-.card{background:linear-gradient(180deg,rgba(21,34,54,.97),rgba(14,24,40,.97));border:1px solid var(--line);border-radius:24px;padding:clamp(22px,5vw,38px);box-shadow:0 24px 80px #0006}
-h1{font-size:clamp(30px,6vw,43px);line-height:1.08;margin:0 0 12px;letter-spacing:-1.4px}.sub{color:var(--muted);margin:0 0 28px}
-label{display:block;font-size:13px;font-weight:700;margin-bottom:9px;color:#dbe7f6}
-.inputrow{display:flex;gap:10px;flex-wrap:wrap}input{flex:1 1 270px;min-width:0;background:#0a1423;border:1px solid #344761;border-radius:12px;padding:15px;color:#fff;font:inherit;outline:none}input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #54d6a022}
-button{border:0;border-radius:12px;padding:14px 20px;background:var(--accent);color:#071a15;font-weight:800;font:inherit;cursor:pointer}button:hover{filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed}
-.notice{margin-top:18px;padding:14px;border:1px solid #344761;background:#0b1626;border-radius:12px;color:var(--muted);font-size:13px}
-.result{display:none;margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0b1626}.result.show{display:block}.status{font-weight:700;margin-bottom:5px}.small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}.download{display:inline-block;margin-top:12px;text-decoration:none;background:var(--accent);color:#071a15;font-weight:800;padding:10px 15px;border-radius:10px}
-footer{text-align:center;color:#71839b;font-size:12px;margin-top:20px}
-</style>
-</head>
-<body>
-<main>
-  <div class="brand"><div class="logo">D</div><div><strong>DISK SPACE DOWNLOAD</strong><span>Simple link-based video downloader</span></div></div>
-  <section class="card">
-    <h1>Download your video</h1>
-    <p class="sub">Paste a video link below to check whether a direct download is available.</p>
-    <form id="form">
-      <label for="url">VIDEO LINK</label>
-      <div class="inputrow">
-        <input id="url" type="url" placeholder="https://..." required autocomplete="url">
-        <button type="submit">Check link</button>
-      </div>
-    </form>
-    <div id="result" class="result" aria-live="polite"></div>
-    <div class="notice"><strong>Note:</strong> This starter version supports direct video-file links that you are authorized to download. DiskWala app/share links need an approved integration or a direct download URL; this page does not bypass sign-in, paid access, DRM, or platform restrictions.</div>
-  </section>
-  <footer>Independent project · Disk Space Download</footer>
-</main>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(145deg,#172b43,#08111e 65%);color:#eef5ff;font:16px system-ui,Arial;display:grid;place-items:center;padding:22px}
+main{width:min(100%,620px)}.brand{display:flex;gap:12px;align-items:center;margin:0 0 22px}.logo{width:46px;height:46px;border-radius:14px;background:#54d6a0;color:#082016;display:grid;place-items:center;font-weight:900;font-size:23px}.brand b{display:block}.brand small,.muted{color:#9babc0}.card{background:#111e30;border:1px solid #2a3b52;border-radius:22px;padding:clamp(22px,5vw,34px);box-shadow:0 24px 70px #0006}h1{font-size:clamp(29px,6vw,40px);line-height:1.1;margin:0 0 10px}.muted{margin:0 0 25px}label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.row{display:flex;gap:10px;flex-wrap:wrap}input{flex:1 1 260px;min-width:0;padding:15px;border-radius:12px;border:1px solid #344861;background:#091422;color:white;font:inherit}button,a.btn{border:0;border-radius:12px;background:#54d6a0;color:#082016;font-weight:800;padding:14px 18px;text-decoration:none;font:inherit;cursor:pointer}.result{display:none;margin-top:17px;padding:15px;border:1px solid #344861;background:#0a1625;border-radius:13px}.result.show{display:block}.result p{margin:0 0 12px}.actions{display:flex;gap:10px;flex-wrap:wrap}.secondary{background:#24364d!important;color:#eaf2fc!important}.note{margin-top:18px;padding:13px;border-radius:12px;background:#0a1625;border:1px solid #2a3b52;color:#9babc0;font-size:13px}footer{text-align:center;color:#73859e;font-size:12px;margin-top:18px}
+</style></head>
+<body><main>
+<div class="brand"><div class="logo">D</div><div><b>DISK SPACE DOWNLOAD</b><small>Personal-use link helper</small></div></div>
+<section class="card">
+<h1>Open your DiskWala video</h1><p class="muted">Paste a DiskWala share link to continue with the available official viewing or download options.</p>
+<form id="form"><label for="url">DISKWALA VIDEO LINK</label><div class="row"><input id="url" type="url" placeholder="https://www.diskwala.com/app/..." required><button>Check link</button></div></form>
+<div id="result" class="result" aria-live="polite"></div>
+<div class="note"><b>Important:</b> This page checks the link format and provides supported next steps. It does not extract private media URLs or bypass app access, download settings, subscriptions, or DRM. Direct browser downloads require an official/authorized download endpoint.</div>
+</section><footer>Independent personal project · Disk Space Download</footer></main>
 <script>
-const form=document.getElementById('form'), input=document.getElementById('url'), result=document.getElementById('result');
+const form=document.querySelector('#form'),input=document.querySelector('#url'),result=document.querySelector('#result');
 form.addEventListener('submit',e=>{
-  e.preventDefault();
-  let u;
-  try{u=new URL(input.value.trim())}catch{show('Please enter a valid URL.');return}
-  if(!['http:','https:'].includes(u.protocol)){show('Only http and https links are supported.');return}
-  const path=u.pathname.toLowerCase();
-  const isDirect=/\\.(mp4|webm|mov|m4v|ogv)$/.test(path);
-  if(isDirect){
-    result.className='result show';
-    result.innerHTML='<div class="status">Direct video link detected</div><div class="small">If this file is publicly accessible and downloading is permitted, use the button below.</div><a class="download" href="'+u.href.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" download>Download video</a>';
-  }else{
-    show('This is a webpage/app link, not a direct video file. For DiskWala, we still need its permitted direct-download method or API before automatic downloading can work.');
-  }
+ e.preventDefault();
+ let u;try{u=new URL(input.value.trim())}catch{show('Please enter a valid URL.');return}
+ if(u.protocol!=='https:'||u.hostname!=='www.diskwala.com'||!/^\/app\/[A-Za-z0-9_-]+\/?$/.test(u.pathname)){show('Please enter a complete DiskWala app/share link in the format https://www.diskwala.com/app/FILE_ID');return}
+ const preview='https://diskwaala.com/video-player';
+ result.className='result show';
+ result.innerHTML='<p><b>DiskWala link format recognized.</b><br><span class="muted">Use the preview service to check available title, thumbnail and file size. Actual playback/download options depend on the source permissions.</span></p><div class="actions"><a class="btn" href="'+preview+'" target="_blank" rel="noopener">Open video preview</a><a class="btn secondary" href="'+u.href+'" target="_blank" rel="noopener">Open DiskWala app link</a></div>';
 });
-function show(msg){result.className='result show';result.textContent=msg}
-</script>
-</body>
-</html>
+function show(t){result.className='result show';result.textContent=t}
+</script></body></html>
