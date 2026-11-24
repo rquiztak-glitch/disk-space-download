@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Disk Space Download</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2e;--muted:#9aa9bf;--line:#26364d;--accent:#54d6a0}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 0,#1b3450 0,var(--bg) 48%);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:#eef5ff;display:grid;place-items:center;padding:22px}
+main{width:min(100%,650px)}.brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#54d6a0,#36a6c8);display:grid;place-items:center;color:#07131c;font-size:23px;font-weight:900}.brand strong{display:block;font-size:18px;letter-spacing:.2px}.brand span{font-size:12px;color:var(--muted)}
+.card{background:linear-gradient(180deg,rgba(21,34,54,.97),rgba(14,24,40,.97));border:1px solid var(--line);border-radius:24px;padding:clamp(22px,5vw,38px);box-shadow:0 24px 80px #0006}
+h1{font-size:clamp(30px,6vw,43px);line-height:1.08;margin:0 0 12px;letter-spacing:-1.4px}.sub{color:var(--muted);margin:0 0 28px}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:9px;color:#dbe7f6}
+.inputrow{display:flex;gap:10px;flex-wrap:wrap}input{flex:1 1 270px;min-width:0;background:#0a1423;border:1px solid #344761;border-radius:12px;padding:15px;color:#fff;font:inherit;outline:none}input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #54d6a022}
+button{border:0;border-radius:12px;padding:14px 20px;background:var(--accent);color:#071a15;font-weight:800;font:inherit;cursor:pointer}button:hover{filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed}
+.notice{margin-top:18px;padding:14px;border:1px solid #344761;background:#0b1626;border-radius:12px;color:var(--muted);font-size:13px}
+.result{display:none;margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0b1626}.result.show{display:block}.status{font-weight:700;margin-bottom:5px}.small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}.download{display:inline-block;margin-top:12px;text-decoration:none;background:var(--accent);color:#071a15;font-weight:800;padding:10px 15px;border-radius:10px}
+footer{text-align:center;color:#71839b;font-size:12px;margin-top:20px}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><div class="logo">D</div><div><strong>DISK SPACE DOWNLOAD</strong><span>Simple link-based video downloader</span></div></div>
+  <section class="card">
+    <h1>Download your video</h1>
+    <p class="sub">Paste a video link below to check whether a direct download is available.</p>
+    <form id="form">
+      <label for="url">VIDEO LINK</label>
+      <div class="inputrow">
+        <input id="url" type="url" placeholder="https://..." required autocomplete="url">
+        <button type="submit">Check link</button>
+      </div>
+    </form>
+    <div id="result" class="result" aria-live="polite"></div>
+    <div class="notice"><strong>Note:</strong> This starter version supports direct video-file links that you are authorized to download. DiskWala app/share links need an approved integration or a direct download URL; this page does not bypass sign-in, paid access, DRM, or platform restrictions.</div>
+  </section>
+  <footer>Independent project · Disk Space Download</footer>
+</main>
+<script>
+const form=document.getElementById('form'), input=document.getElementById('url'), result=document.getElementById('result');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  let u;
+  try{u=new URL(input.value.trim())}catch{show('Please enter a valid URL.');return}
+  if(!['http:','https:'].includes(u.protocol)){show('Only http and https links are supported.');return}
+  const path=u.pathname.toLowerCase();
+  const isDirect=/\\.(mp4|webm|mov|m4v|ogv)$/.test(path);
+  if(isDirect){
+    result.className='result show';
+    result.innerHTML='<div class="status">Direct video link detected</div><div class="small">If this file is publicly accessible and downloading is permitted, use the button below.</div><a class="download" href="'+u.href.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" download>Download video</a>';
+  }else{
+    show('This is a webpage/app link, not a direct video file. For DiskWala, we still need its permitted direct-download method or API before automatic downloading can work.');
+  }
+});
+function show(msg){result.className='result show';result.textContent=msg}
+</script>
+</body>
+</html>
